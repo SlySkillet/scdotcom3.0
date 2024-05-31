@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 
 .sc-venv
+.env
 
 # C extensions
 *.so
