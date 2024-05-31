@@ -6,3 +6,4 @@ class BlogPost(models.Model):
     last_updated = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=200)
     body = models.TextField(default="")
+    image = models.ImageField(upload_to='images/', blank=True)

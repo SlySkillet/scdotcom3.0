@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,8 +42,23 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "cloudinary_storage",
     "django.contrib.staticfiles",
+    "cloudinary"
 ]
+
+# CLOUDINARY_STORAGE = {
+#     "CLOUD_NAME": "ddgt67wcb",
+#     "API_KEY": "283597494888126",
+#     "API_SECRET": "WOGBGa8szkpUpwvXmDVPWO8OzTU"
+# }
+
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": os.getenv('CLOUDINARY_CLOUD_NAME'),
+    "API_KEY": os.getenv('CLOUDINARY_API_KEY'),
+    "API_SECRET": os.getenv('CLOUDINARY_API_SECRET'),
+}
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -118,6 +137,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
+
+MEDIA_URL = '/media/'  # or any prefix you choose
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
