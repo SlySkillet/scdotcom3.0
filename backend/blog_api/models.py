@@ -16,6 +16,7 @@ class BlogPost(models.Model):
     image = models.ImageField(upload_to="images/", blank=True)
     image_caption = models.TextField(blank=True, null=True)
     tags = models.ManyToManyField(Tag, related_name="blog_posts", blank=True)
+    published = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

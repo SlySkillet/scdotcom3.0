@@ -20,5 +20,6 @@ class BlogPostSerializer(serializers.ModelSerializer):
             'body',
             'image',
             'image_caption',
-            'tags'
+            'tags',
+            'published'
         ]
